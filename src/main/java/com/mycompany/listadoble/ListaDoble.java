@@ -32,6 +32,7 @@ public class ListaDoble {
             nuevo.setAnterior(temporal);
         }
     }
+    
     public void imprimir(){
         Nodo temporal = inicio;
         while(temporal != null){
@@ -43,13 +44,38 @@ public class ListaDoble {
     public void buscar(int posicion){
         Nodo temporal = inicio;
         int contador = 1;
+        boolean valor = false;
+        if(inicio == null){
+            JOptionPane.showMessageDialog(null, "La lista esta vacia");
+        }
+        
         while(temporal != null){
+
             if(contador == posicion){
+                if(posicion == 1){
+                    JOptionPane.showMessageDialog(null, "La persona es la primera en lista");
+                    JOptionPane.showMessageDialog(null, "Persona delante: "+temporal.getSiguiente().toString());
+                    return;
+                }
+                
+                if(contador == 1){
+                    JOptionPane.showMessageDialog(null, "La persona es la primera en lista");
+                    return;
+                }
                 JOptionPane.showMessageDialog(null, "Persona atras: "+temporal.getAnterior().toString());
                 JOptionPane.showMessageDialog(null, "Persona delante: "+temporal.getSiguiente().toString());
+                valor = true;
             }
             contador++;
             temporal = temporal.getSiguiente();
+            if(temporal.getSiguiente() == null){
+                JOptionPane.showMessageDialog(null, "La persona es la ultima en la lista");
+                JOptionPane.showMessageDialog(null, "Persona atras: "+temporal.getAnterior().toString());
+                return;
+            }
+        }
+        if(!valor){
+            JOptionPane.showMessageDialog(null, "La posicion no existe dentro de la lista");
         }
     }
     
@@ -80,7 +106,6 @@ public class ListaDoble {
                if(temporal.getSiguiente() != null){
                    temporal.getSiguiente().setAnterior(temporal.getAnterior());
                }
-               
            }
             temporal = temporal.getSiguiente();
         }
