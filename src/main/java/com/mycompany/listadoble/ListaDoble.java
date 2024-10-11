@@ -83,7 +83,7 @@ public class ListaDoble {
         int contador = 1;
         while(temporal != null){
            if(temporal.getEdad()>=18){
-               JOptionPane.showMessageDialog(null, "La persona "+temporal.getNombre() +"es mayor de edad y esta en la posicion "+contador);
+               JOptionPane.showMessageDialog(null, "La persona "+temporal.getNombre() +" es mayor de edad y esta en la posicion "+contador);
            }
            contador++;
             temporal = temporal.getSiguiente();
@@ -113,5 +113,40 @@ public class ListaDoble {
         }
     }
     
+    public void eliminarPorPosicion(int posicion){
+        boolean value = false;
+        if(inicio == null){
+            JOptionPane.showMessageDialog(null, "La lista esta vacía");
+        }
+        Nodo temporal = inicio;
+        int contador = 1;
+        while(temporal!= null){
+            if(contador == posicion){
+                if(temporal.getAnterior() != null){
+                   temporal.getAnterior().setSiguiente(temporal.getSiguiente());
+               }
+               else{
+                   inicio = temporal.getSiguiente();
+               }
+               
+               if(temporal.getSiguiente() != null){
+                   temporal.getSiguiente().setAnterior(temporal.getAnterior());
+                   return;
+               }
+               else{
+                   JOptionPane.showMessageDialog(null, "La lista ha quedado vacia");
+               }
+               value = true;
+            }
+            contador++;
+            temporal = temporal.getSiguiente();
+        }
+        if(value){
+            JOptionPane.showMessageDialog(null, "Usuario eliminado");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El usuario no existe");
+        }
+    }
     
 }

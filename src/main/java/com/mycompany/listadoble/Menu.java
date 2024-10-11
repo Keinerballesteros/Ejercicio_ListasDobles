@@ -35,6 +35,7 @@ public class Menu extends javax.swing.JFrame {
         buscar = new javax.swing.JButton();
         mayoresDeEdad = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
+        eliminarPorPosicion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +76,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        eliminarPorPosicion.setText("Eliminar Por Posicion");
+        eliminarPorPosicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarPorPosicionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,19 +95,22 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mayoresDeEdad)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(insertarFinal)
                                 .addGap(76, 76, 76)
-                                .addComponent(imprimir)))))
+                                .addComponent(imprimir))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(mayoresDeEdad)
+                                .addGap(39, 39, 39)
+                                .addComponent(eliminar)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(buscar)
-                        .addGap(38, 38, 38))
+                        .addGap(105, 105, 105))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(eliminar)
-                        .addGap(77, 77, 77))))
+                        .addComponent(eliminarPorPosicion)
+                        .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +125,8 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mayoresDeEdad)
-                    .addComponent(eliminar))
+                    .addComponent(eliminar)
+                    .addComponent(eliminarPorPosicion))
                 .addContainerGap(157, Short.MAX_VALUE))
         );
 
@@ -140,6 +152,10 @@ public class Menu extends javax.swing.JFrame {
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         listaDoble.eliminarMenoresDeEdad();
     }//GEN-LAST:event_eliminarActionPerformed
+
+    private void eliminarPorPosicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPorPosicionActionPerformed
+       listaDoble.eliminarPorPosicion(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posicion")));
+    }//GEN-LAST:event_eliminarPorPosicionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,6 +195,7 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar;
     private javax.swing.JButton eliminar;
+    private javax.swing.JButton eliminarPorPosicion;
     private javax.swing.JButton imprimir;
     private javax.swing.JButton insertarFinal;
     private javax.swing.JLabel jLabel1;
